@@ -1,0 +1,6 @@
+@mixin sm {
+    @media (max-width: 768px){ 
+    @content;
+    // include ile gçnderdiğimiz stiller buraya aktarılır.
+}
+}
