@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,400&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import 'variables';
 @import 'breakpoints';
+@import 'modal';
 
 * {
     margin: 0;
@@ -105,14 +106,25 @@ nav {
         gap: 16px;
 
         li {
+            list-style: none;
+            label{ 
             padding: 8px;
             margin-left: 4px;
             display: flex;
             gap: 12px;
             border-radius: 0 15px 15px 0;
-
+            cursor: pointer;
             &:hover {
                 background: $light_blue;
+            }
+           }
+
+          input{
+                display: none;
+            }
+// egerki içinde inputu tikli olan li elemanı varsa stilleri uygular
+            &:has(input:checked) label{
+                background:$light_blue ;
             }
         }
     }
@@ -175,6 +187,10 @@ main {
     column-gap: 5px;
     cursor: pointer;
 
+    #star{
+        color: gold;
+    }
+
     &:hover {
         box-shadow: 0 0 30px rgba(128, 128, 128, 0.4);
     }
@@ -207,14 +223,15 @@ main {
         text-align: end;
         white-space: nowrap;
     }
-
+    #button-wrapper{
+         display: none;
+    }
     button {
-        display: none;
         border: none;
         background: transparent;
         cursor: pointer;
         transition: all 0.3s;
-        padding: 4px;
+        padding: 4px 10px;
         border-radius: 5px;
 
         &:hover {
@@ -222,8 +239,9 @@ main {
         }
     }
 
-    &:hover>button {
-        display: block;
+    &:hover>#button-wrapper {
+        display: flex;
+        justify-content: end;
     }
 
     &:hover>.time {

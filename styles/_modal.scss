@@ -1,0 +1,76 @@
+.modal-wrapper {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    display: none;
+    place-items: center;
+
+    input {
+        border: none;
+        border-bottom: 1px solid gray;
+        padding: 10px;
+        margin: 0 6px;
+        outline: none;
+    }
+
+    textarea {
+        padding: 10px;
+        height: 100%;
+        outline: none;
+        margin: 0 6px;
+        resize: none;
+        border: none;
+        font-family: 'roboto';
+    }
+
+    #send {
+        border-radius: 50px;
+        border: none;
+        width: 140px;
+        padding: 14px;
+        margin: 10px;
+        background: #1b61d1;
+        color: white;
+
+        &:hover {
+            background: #05337c;
+            ;
+        }
+    }
+}
+
+.modal {
+    background: white;
+    width: 80%;
+    max-width: 700px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.modal .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(190, 190, 190);
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 20px;
+}
+
+.modal .header button {
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background: gray;
+        color: white;
+    }
+}

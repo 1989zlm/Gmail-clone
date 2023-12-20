@@ -19,6 +19,77 @@
   background: #d8dbdd;
 }
 
+.modal-wrapper {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  display: none;
+  place-items: center;
+}
+.modal-wrapper input {
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  margin: 0 6px;
+  outline: none;
+}
+.modal-wrapper textarea {
+  padding: 10px;
+  height: 100%;
+  outline: none;
+  margin: 0 6px;
+  resize: none;
+  border: none;
+  font-family: "roboto";
+}
+.modal-wrapper #send {
+  border-radius: 50px;
+  border: none;
+  width: 140px;
+  padding: 14px;
+  margin: 10px;
+  background: #1b61d1;
+  color: white;
+}
+.modal-wrapper #send:hover {
+  background: #05337c;
+}
+
+.modal {
+  background: white;
+  width: 80%;
+  max-width: 700px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.modal .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(190, 190, 190);
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  font-size: 20px;
+}
+
+.modal .header button {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.modal .header button:hover {
+  background: gray;
+  color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -106,13 +177,23 @@ nav ul {
   gap: 16px;
 }
 nav ul li {
+  list-style: none;
+}
+nav ul li label {
   padding: 8px;
   margin-left: 4px;
   display: flex;
   gap: 12px;
   border-radius: 0 15px 15px 0;
+  cursor: pointer;
 }
-nav ul li:hover {
+nav ul li label:hover {
+  background: #d0ebff;
+}
+nav ul li input {
+  display: none;
+}
+nav ul li:has(input:checked) label {
   background: #d0ebff;
 }
 nav .bottom {
@@ -157,6 +238,9 @@ main .mails {
        column-gap: 5px;
   cursor: pointer;
 }
+.mail #star {
+  color: gold;
+}
 .mail:hover {
   box-shadow: 0 0 30px rgba(128, 128, 128, 0.4);
 }
@@ -184,20 +268,23 @@ main .mails {
   text-align: end;
   white-space: nowrap;
 }
-.mail button {
+.mail #button-wrapper {
   display: none;
+}
+.mail button {
   border: none;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s;
-  padding: 4px;
+  padding: 4px 10px;
   border-radius: 5px;
 }
 .mail button:hover {
   background: rgb(201, 200, 200);
 }
-.mail:hover > button {
-  display: block;
+.mail:hover > #button-wrapper {
+  display: flex;
+  justify-content: end;
 }
 .mail:hover > .time {
   display: none;
