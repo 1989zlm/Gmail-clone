@@ -66,7 +66,7 @@ ele.modalForm.addEventListener('submit', (e) => {
       receiver: receiver,
       title: title,
       message: message,
-      date: 'getDate()'
+      date: getDate()
     };
 
     // yeni maili mailler diizisine kaydettik ardındab 
@@ -140,7 +140,42 @@ renderMails(filtred);
 
  });
 
+// 7) arama ve aratma özelliği
+// kullancının anlık olarak her veri girdiğinde mailleri filtrele
 
+//sayaç değişkeni
+let timer;
 
+ele.seacrhInp.addEventListener('input', (e) => {
+  // yeni tuuş vuruşunda öncekş geri sayımı sıfırla
+  clearTimeout(timer);
+  // fonksiyonu çalıştırmak için geri sayım başlat
+  timer = setTimeout (() =>  searchMail(e), 400);
+ });
+
+function searchMail(e){
+   // arama terimine erişme
+  const query = e.target.value;
+console.log('filtreleme yapıldı', query)
+   //mailin içersindeki en az bir değer arattığımız terimi
+  // içeriyorsa maili filtrele
+  const filtred = mailData.filter((mail) => 
+  // objeyi diziye çevirdik
+    Object.values(mail) 
+    // dizinin istediğimiz elemanlarını aldık
+    .slice(1,6) 
+    // objenin değerlerinden en az biri arattığımız terimi içeriyormu?
+    .some((value) => value.toLowerCase().includes(query))
+  );
+   
+  if(filtred.length === 0 ){
+    ele.mailsArea.innerHTML =
+    '<div class="warn">Arattığınız terime uygun mail bulunamadı</div>';
+  }else{
+    // filtrenenleri ekrana bas
+   renderMails(filtred);
+  }
+
+}
 
 

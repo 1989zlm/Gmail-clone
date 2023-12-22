@@ -10,6 +10,7 @@ export const ele = {
   createBtn: document.querySelector('.create'),
   closeBtn: document.querySelector('.close-modal'),
   modalForm: document.querySelector('.modal'),
+  seacrhInp: document.querySelector('form #search'),
 
 };
 
